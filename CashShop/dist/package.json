@@ -2,7 +2,7 @@
   "isCore": "true",
   "name": "CashShop",
   "guid": "8f2085ff-2211-4e9f-b156-2ba036d9d53a",
-  "packageUrl": "https://github.com/denariigames/mmokitce-addons/raw/refs/heads/master/CashShop/dist/CashShop.unitypackage",
+  "packageUrl": "https://github.com/open-mmorpg/open-mmorpg-addons/raw/refs/heads/master/CashShop/dist/CashShop.unitypackage",
   "version": "1.0.0",
   "updateDate": "2026-05-15",
   "category": "Economy",

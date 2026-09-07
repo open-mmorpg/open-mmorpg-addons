@@ -1,1 +1,1 @@
-Addons for MmoKitCE
+Addons for Open MMORPG

@@ -1,7 +1,7 @@
 {
   "name": "Tiny Epic Characters",
   "guid": "9e6bab99-3819-4656-9746-104e01b31528",
-  "packageUrl": "https://github.com/denariigames/mmokitce-addons/raw/refs/heads/master/TinyEpicCharacters/dist/TinyEpicCharacters.unitypackage",
+  "packageUrl": "https://github.com/open-mmorpg/open-mmorpg-addons/raw/refs/heads/master/TinyEpicCharacters/dist/TinyEpicCharacters.unitypackage",
   "version": "1.0.1",
   "updateDate": "2026-05-15",
   "category": "Characters",

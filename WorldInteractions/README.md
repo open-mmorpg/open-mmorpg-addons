@@ -5,7 +5,7 @@
 - This is primarily a _developer_ framework, meaning you will be expected to write your own handlers for Interaction Types like Harvest, Open and Talk.
 - A sample handler for Use is provided where a GameItem is given to the player when Using the WorldTarget.
 
-<img src="https://github.com/denariigames/nightblade-addons/blob/master/WorldInteractions/dist/screenshot.png" alt="WorldInteractions" height="350">
+<img src="https://github.com/open-mmorpg/open-mmorpg-addons/blob/master/WorldInteractions/dist/screenshot.png" alt="WorldInteractions" height="350">
 
 ## Usage
 

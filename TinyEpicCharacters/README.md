@@ -2,7 +2,7 @@
 
 **Tiny Epic Characters** contains character models, animations and audio used in the Tiny Epic Demo. This package is split out if you wish to use these characters in your own project.
 
-<img src="https://github.com/denariigames/mmokitce-addons/blob/master/TinyEpicCharacters/dist/screenshot.png" alt="TinyEpicCharacters" height="350">
+<img src="https://github.com/open-mmorpg/open-mmorpg-addons/blob/master/TinyEpicCharacters/dist/screenshot.png" alt="TinyEpicCharacters" height="350">
 
 ## Credits
 

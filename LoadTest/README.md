@@ -1,6 +1,6 @@
 # Load Test Base Scene
 
-<img src="https://github.com/denariigames/nightblade-addons/blob/master/LoadTest/dist/screenshot.png" alt="LoadTest" height="350">
+<img src="https://github.com/open-mmorpg/open-mmorpg-addons/blob/master/LoadTest/dist/screenshot.png" alt="LoadTest" height="350">
 
 Load Test base scene and Build Profile.
 

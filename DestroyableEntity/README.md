@@ -1,6 +1,6 @@
 # Destroyable Entity
 
-<img src="https://raw.githubusercontent.com/denariigames/mmokitce-addons/refs/heads/master/DestroyableEntity/dist/screenshot.png" width=600 />
+<img src="https://raw.githubusercontent.com/open-mmorpg/open-mmorpg-addons/refs/heads/master/DestroyableEntity/dist/screenshot.png" width=600 />
 
 Adds HarvestableEntity type that awards items on death (as opposed to per hit). Useful for things like smashing barrels which any proper RPG should have.
 
