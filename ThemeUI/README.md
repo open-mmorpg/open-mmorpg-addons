@@ -1,8 +1,8 @@
 # ThemeUI
 
-**ThemeUI** is a UI theming and rapid prototyping addon for [**MmoKitCE**](https://github.com/denariigames/MmoKitCE). It allows you to completely restyle your game user interface using theme files, dramatically speeding up UI iteration and enabling easy modification of your theme in the future.
+**ThemeUI** is a UI theming and rapid prototyping addon for [**Open MMORPG**](https://github.com/open-mmorpg/open-mmorpg). It allows you to completely restyle your game user interface using theme files, dramatically speeding up UI iteration and enabling easy modification of your theme in the future.
 
-<img src="https://github.com/denariigames/mmokitce-addons/blob/master/ThemeUI/screenshot.png" alt="ThemeUI" height="350">
+<img src="https://github.com/open-mmorpg/open-mmorpg-addons/blob/master/ThemeUI/screenshot.png" alt="ThemeUI" height="350">
 
 
 ## Features
@@ -28,7 +28,7 @@
   - Ready-to-use texture atlases
 
 - **Prefabs**  
-  Pre-configured combinations of ThemeUI + MmoKitCE prefabs  
+  Pre-configured combinations of ThemeUI + Open MMORPG prefabs  
   (currently focused on **Home scene** – more coming)
 
 
@@ -63,4 +63,4 @@ Pull requests welcome! Especially:
 - Example themes
 - Bug fixes for specific NightBlade scenes
 
-Created with ❤️ for the MmoKitCE community by Denarii Games.
+Created with ❤️ for the Open MMORPG community by Denarii Games.

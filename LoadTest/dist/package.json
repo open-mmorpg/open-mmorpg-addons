@@ -1,7 +1,7 @@
 {
   "name": "Load Test Base Scene",
   "guid": "73a74142-a905-479c-b411-333ca362bc01",
-  "packageUrl": "https://github.com/denariigames/nightblade-addons/raw/refs/heads/master/LoadTest/dist/LoadTest.unitypackage",
+  "packageUrl": "https://github.com/open-mmorpg/open-mmorpg-addons/raw/refs/heads/master/LoadTest/dist/LoadTest.unitypackage",
   "version": "1.0.0",
   "updateDate": "2026-01-08",
   "category": "MMO",

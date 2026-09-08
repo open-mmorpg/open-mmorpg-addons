@@ -1,13 +1,13 @@
-# MmoKitCE Addon Packager
+# Open MMORPG Addon Packager
 
-**Addon Packager** is a custom Unity Editor tool designed for [**MmoKitCE**](https://github.com/denariigames/MmoKitCE) community contributions. It simplifies the process of packaging your addons by:
+**Addon Packager** is a custom Unity Editor tool designed for [**Open MMORPG**](https://github.com/open-mmorpg/open-mmorpg) community contributions. It simplifies the process of packaging your addons by:
 
 - Exporting your addon folder as a `.unitypackage` with the required guid file
 - Automatically generating a properly formatted `package.json` manifest
 
-This makes it incredibly easy to share your addons with the MmoKitCE community.
+This makes it incredibly easy to share your addons with the Open MMORPG community.
 
-<img src="https://github.com/denariigames/mmokitce-addons/blob/master/AddonPackager/dist/screenshot.png" alt="AddonPackager" height="350">
+<img src="https://github.com/open-mmorpg/open-mmorpg-addons/blob/master/AddonPackager/dist/screenshot.png" alt="AddonPackager" height="350">
 
 ## Features
 
@@ -16,7 +16,7 @@ This makes it incredibly easy to share your addons with the MmoKitCE community.
   - Generate a new unique GUID (default)  
   - Or manually enter a fixed GUID for updates
 - **GitHub-ready package URL** auto-generation
-- Supports all required `package.json` fields used by MmoKitCE Addon Manager
+- Supports all required `package.json` fields used by Open MMORPG Addon Manager
 
 ## Example Output
 

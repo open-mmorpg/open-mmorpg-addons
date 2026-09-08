@@ -1,6 +1,6 @@
 # Odin Inspector
 
-<img src="https://github.com/denariigames/nightblade-addons/blob/master/OdinInspector/dist/screenshot.gif" alt="OdinInspector" height="350">
+<img src="https://github.com/open-mmorpg/open-mmorpg-addons/blob/master/OdinInspector/dist/screenshot.gif" alt="OdinInspector" height="350">
 
 Odin Inspector provides more efficient and enjoyable gamedata editing.
 

@@ -1,7 +1,7 @@
 {
   "name": "Odin Inspector",
   "guid": "3ab1a55a-b78c-4c53-8597-19425873811d",
-  "packageUrl": "https://github.com/denariigames/nightblade-addons/raw/refs/heads/master/OdinInspector/dist/OdinInspector.unitypackage",
+  "packageUrl": "https://github.com/open-mmorpg/open-mmorpg-addons/raw/refs/heads/master/OdinInspector/dist/OdinInspector.unitypackage",
   "version": "1.0.0",
   "updateDate": "2026-01-25",
   "category": "Integration",
