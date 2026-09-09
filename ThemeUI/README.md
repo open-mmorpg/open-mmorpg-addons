@@ -1,6 +1,6 @@
 # ThemeUI
 
-**ThemeUI** is a UI theming and rapid prototyping addon for [**Open MMORPG**](https://github.com/open-mmorpg/open-mmorpg). It allows you to completely restyle your game user interface using theme files, dramatically speeding up UI iteration and enabling easy modification of your theme in the future.
+**ThemeUI** is a UI theming and rapid prototyping addon for [**Open MMORPG**](https://github.com/open-mmorpg/OpenMMORPG). It allows you to completely restyle your game user interface using theme files, dramatically speeding up UI iteration and enabling easy modification of your theme in the future.
 
 <img src="https://github.com/open-mmorpg/open-mmorpg-addons/blob/master/ThemeUI/screenshot.png" alt="ThemeUI" height="350">
 

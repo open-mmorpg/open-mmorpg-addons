@@ -1,6 +1,6 @@
 # Open MMORPG Addon Packager
 
-**Addon Packager** is a custom Unity Editor tool designed for [**Open MMORPG**](https://github.com/open-mmorpg/open-mmorpg) community contributions. It simplifies the process of packaging your addons by:
+**Addon Packager** is a custom Unity Editor tool designed for [**Open MMORPG**](https://github.com/open-mmorpg/OpenMMORPG) community contributions. It simplifies the process of packaging your addons by:
 
 - Exporting your addon folder as a `.unitypackage` with the required guid file
 - Automatically generating a properly formatted `package.json` manifest

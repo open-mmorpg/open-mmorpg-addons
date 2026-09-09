@@ -1,6 +1,6 @@
 # Tiny Epic Demo
 
-**Tiny Epic Demo** is intended to show best practices with [**Open MMORPG**](https://github.com/open-mmorpg/open-mmorpg). The addon requires Tiny Epic Characters.
+**Tiny Epic Demo** is intended to show best practices with [**Open MMORPG**](https://github.com/open-mmorpg/OpenMMORPG). The addon requires Tiny Epic Characters.
 
 <img src="https://github.com/open-mmorpg/open-mmorpg-addons/blob/master/TinyEpicCharacters/dist/screenshot.png" alt="TinyEpicCharacters" height="350">
 
