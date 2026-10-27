@@ -22,7 +22,8 @@ on), and a central that restarts adopts the cut layout the cells hold and finish
 
 The add-on is subclasses on the kit's managers and entity prefabs plus one world-registry asset; the package changes no
 kit file. It does build on **eight small kit changes** (bug fixes and extension seams, DESIGN §17), all of them merged
-in OpenMMORPG `develop` (d077c5f, 2026-10-20).
+in OpenMMORPG `develop` by d077c5f (2026-10-20); it does **not** compile on that `develop` yet, though, because the
+kit also replaced its damage dictionaries on the way (see Requirements).
 
 - One cell process holds about **270 players at a 60 fps server tick** on a modern core; size cells so no expected crowd
   exceeds 250 (250–300 m suits a sandbox where towns can appear anywhere).
@@ -34,16 +35,27 @@ in OpenMMORPG `develop` (d077c5f, 2026-10-20).
 
 ## Requirements
 
-- OpenMMORPG `develop` at **d077c5f (2026-10-20) or later**. It carries all eight kit changes the add-on relies on:
-  upstream patches 0001-0004 (also on `master` since 2026-09-15: an owner-change movement fix, frame-granular request
-  waits, a virtual `IsWatched()` on the monster activity component, a protected pending-spawn dictionary on the map
-  manager), 0005 (on `master` since 2026-10-01: a cache finalizer that corrupted pooled collections under load),
-  0006-0007 (one-shot movement flags sent to every receiver of a tick, entity states read to their length) and 0008
-  ([open-mmorpg/OpenMMORPG#8](https://github.com/open-mmorpg/OpenMMORPG/pull/8): a virtual `BuildingPersistenceChannelId` on the kit's `MapNetworkManager`, which
-  `MeshMapNetworkManager` overrides so a Dynamic map's split family keeps its buildings under the base cell's channel).
-  The add-on does not compile without 0006 or 0008. On an older kit, the patch is in the source repository at
-  [`Docs/ServerMeshing/upstream/0008-MapNetworkManager-let-subclasses-choose-the-building-persistence-channel.patch`](https://github.com/vaughanb/mmo-server-meshing/blob/master/Docs/ServerMeshing/upstream/0008-MapNetworkManager-let-subclasses-choose-the-building-persistence-channel.patch)
-  (`git apply --directory=Assets/OpenMMORPG <patch>` from the project root).
+- An OpenMMORPG kit that carries the eight kit changes the add-on relies on **and still has the damage dictionaries
+  upstream replaced on 2026-10-07**. No published commit has both:
+  - The eight changes are upstream patches 0001-0004 (`master` and `develop` since 2026-09-15: an owner-change movement
+    fix, frame-granular request waits, a virtual `IsWatched()` on the monster activity component, a protected
+    pending-spawn dictionary on the map manager), 0005 (`master` since 2026-10-01: a cache finalizer that corrupted
+    pooled collections under load), 0006-0007 (`develop` since 2026-10-02, bb9895f: one-shot movement flags sent to
+    every receiver of a tick, entity states read to their length) and 0008 (`develop` since 2026-10-20, d077c5f,
+    [open-mmorpg/OpenMMORPG#8](https://github.com/open-mmorpg/OpenMMORPG/pull/8): a virtual `BuildingPersistenceChannelId` on the kit's `MapNetworkManager`, which
+    `MeshMapNetworkManager` overrides so a Dynamic map's split family keeps its buildings under the base cell's channel).
+    The add-on does not compile without 0006 or 0008. On a kit without 0008, the patch is in the source repository at
+    [`Docs/ServerMeshing/upstream/0008-MapNetworkManager-let-subclasses-choose-the-building-persistence-channel.patch`](https://github.com/vaughanb/mmo-server-meshing/blob/master/Docs/ServerMeshing/upstream/0008-MapNetworkManager-let-subclasses-choose-the-building-persistence-channel.patch)
+    (`git apply --directory=Assets/OpenMMORPG <patch>` from the project root).
+  - Upstream commit 74ec05b (authored 2026-09-30, on `develop` since 2026-10-07, so in d077c5f too) replaced the kit's
+    `Dictionary<DamageElement, MinMaxFloat>` damage amounts with the inline `DamageElementMinMaxFloatAmounts` structs
+    through its attack, skill and receive-damage paths. The add-on still overrides and calls the dictionary signatures
+    (its attack and skill components, the harvestable, and the ghost-hit forwarding), so **it does not compile on
+    `develop` at d077c5f or later**, as version 0.93.0 claimed it did. The port is open work.
+
+  What compiles today: OpenMMORPG `develop` between **bb9895f (2026-10-02) and e642000e (2026-10-07)** with patch 0008
+  applied as above (`git apply --check` is clean at both ends), which is the kit the add-on was built and its 35
+  scenarios were run against (the source repository's kit copy: `develop` at e2e52e2 with patches 0001-0008 by hand).
 - Unity 6000.3 or newer, matching the kit.
 - Your map scenes in the build settings and your map infos in the game database.
 - For the test rig only: the kit's **BaseDemo** (the rig's test data and scenes reference its enemy prefab and its
