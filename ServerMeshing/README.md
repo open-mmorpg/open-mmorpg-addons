@@ -26,8 +26,8 @@ OpenMMORPG **v1.1.4** (see Requirements).
 
 - One cell process holds about **270 players at a 60 fps server tick** on a modern core; size cells so no expected crowd
   exceeds 250 (250–300 m suits a sandbox where towns can appear anywhere).
-- Ten cells over two maps are exercised by the regression harness of the [test rig](#the-test-rig) the package
-  includes, on one machine or across two: 35 scenarios, twenty-two of them dynamic cells (two run with links on demand, one
+- Ten cells over two maps are exercised by the regression harness of the [test rig](#the-test-rig) in the source
+  repository, on one machine or across two: 35 scenarios, twenty-two of them dynamic cells (two run with links on demand, one
   is the operator's `unfreeze` of a family a central restart left frozen, and one a three-hour soak of automatic splits
   and merges under kills and central restarts) and two on-demand links. Across two
   machines the dynamic scenarios run with the cut family on the second machine's own map spawner.
@@ -49,12 +49,10 @@ OpenMMORPG **v1.1.4** (see Requirements).
     `ApplyAttack`, `ApplySkillUsing` and `ApplyReceiveDamage`).
 - Unity 6000.3 or newer, matching the kit.
 - Your map scenes in the build settings and your map infos in the game database.
-- For the test rig only: the kit's **BaseDemo** (the rig's test data and scenes reference its enemy prefab and its
-  default weapon item and type), and Python 3 with `pymysql` for the harnesses.
 
 ## Usage
 
-1. Import the package, then open **Server Meshing ▸ Setup**. The window has four panels that follow this order.
+1. Import the package, then open **Tools ▸ Open MMORPG ▸ Server Meshing ▸ Setup**. The window has four panels that follow this order.
 2. **Create the world registry** — one asset for the whole world.
 3. **Cut a map into cells**: add your map's layout from the open scene, either as a uniform grid or as explicit
    rectangles. Cell ids are channel ids and must be unique across the world.
@@ -71,39 +69,13 @@ every decision and measurement, and `Documentation/MULTIHOST.md` covers running 
 
 ## The test rig
 
-`TestMap/` in the package is the test rig, and the reference for what a meshed world looks like set up. Two test maps
-are cut into **ten cells** — a 3×3 grid on one map plus a tenth cell across a seam on the other — with each zone
-colour-coded so you can see which server owns the ground you are standing on.
-
-The rig ships the content needed to exercise every path that crosses a cell edge: test items, skills (heal and debuff),
-a kill quest, a bow and missile, a mount, a pet, a harvestable and a placeable building. It adds an **auto client** that
-walks characters over edges on its own, an editor **launcher** and **play runner** that bring up all ten cell processes,
-a **load generator**, and the Python regression and capacity harnesses under `TestMap/Tools`. The regression harness
-runs 35 scenarios: eleven of the mesh itself (handoff, ghosts, combat, parties, buildings, seams, sleeping cells),
-twenty-two of dynamic cells (split, merge, a three-cell family's merge and sibling collapse, crashes mid-operation, the
-automatic policy with one or two hot cells and a host without headroom, buildings across a cut, a central restart, the
-last with the central run as a build process of its own so it can be killed alone, and a three-hour soak of automatic
-splits and merges under child kills and central restarts; two run with links on demand) and two of on-demand links (a
-map of more cells than a capped link server takes, and a party share for a far member). With `--remote-cells` the
-second machine serves cells too: started by hand for a Static scenario, by its own map spawner (children, restarts and
-kills included) for a Dynamic one.
-
-To try it:
-
-1. Add `ServerMeshTestMap` and `ServerMeshTestMap2` to the build settings and their map infos to the game database;
-   **Server Meshing ▸ Setup ▸ Validate** reports anything still missing.
-2. Assign `ServerMeshWorld` as the world registry — it already holds the ten-cell layout and both maps' placement.
-3. **Server Meshing ▸ Launch Test Cluster** starts one map-server process per cell (plus the central, login and
-   database servers) from a server build, or copies the commands to the clipboard.
-4. **Server Meshing ▸ Auto Client ▸ Enable (walk C→E)** makes the editor client walk across a cell edge on its own
-   when you enter Play; the other modes cover self-migration and enter-only.
-
-`TestMap/Tools/` is a reference copy of `regress.py` (the 35 regression scenarios), `loadtest.py` (the capacity sweep)
-and their helpers. They are written for the repository layout, not for a location inside `Assets`: they find the
-project root two directories above themselves and expect `Config/mySqlConfig.json`, a server build at
-`Build/Server/kit-ce-project.exe` and the editor's play runner watching `Temp/`. To run them, copy the folder to
-`<project>/Tools/ServerMeshing/` and adjust the build path to your product name. `Documentation/SETUP.md` §7 and
-`MULTIHOST.md` cover what they do and how to run the rig across two machines.
+The test rig is not in the package (it was in 0.93.0-0.95.0). It lives in the source repository,
+[vaughanb/mmo-server-meshing](https://github.com/vaughanb/mmo-server-meshing): `Assets/ServerMeshing/TestMap` (two test
+maps cut into ten cells, a 3×3 grid plus a tenth cell across a seam, with content that exercises every path across a
+cell edge, an auto client, an editor launcher and play runner, and a load generator) and the Python regression and
+capacity harnesses in `Tools/ServerMeshing/` (the 35 scenarios above). It needs that repository's layout (a server build
+at `Build/Server/`, `Config/mySqlConfig.json`), the kit's **BaseDemo**, and Python 3 with `pymysql`; `SETUP.md` §7 and
+`MULTIHOST.md` cover running it.
 
 ## Licence
 
