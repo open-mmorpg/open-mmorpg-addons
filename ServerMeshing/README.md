@@ -22,19 +22,24 @@ on), and a central that restarts adopts the cut layout the cells hold and finish
 
 The add-on is subclasses on the kit's managers and entity prefabs plus one world-registry asset; the package changes no
 kit file. It does build on **eight small kit changes** (bug fixes and extension seams, DESIGN §17), all of them in
-OpenMMORPG **v1.1.4** (see Requirements).
+OpenMMORPG since **v1.1.4**; the add-on needs a newer kit than that (see Requirements).
 
 - One cell process holds about **270 players at a 60 fps server tick** on a modern core; size cells so no expected crowd
   exceeds 250 (250–300 m suits a sandbox where towns can appear anywhere).
 - Ten cells over two maps are exercised by the regression harness of the [test rig](#the-test-rig) in the source
-  repository, on one machine or across two: 35 scenarios, twenty-two of them dynamic cells (two run with links on demand, one
+  repository: 52 scenarios, among them dynamic cells, trades, shops and mail across a line, crash recovery and a
+  three-hour soak. The last full run on one machine was on 0.97.31's code; each later change ran the scenarios it
+  reaches. Across two machines the dynamic scenarios last ran on 0.90's code and the soak on 0.92's. Before that the
+  harness had 35 scenarios,
+  twenty-two of them dynamic cells (two run with links on demand, one
   is the operator's `unfreeze` of a family a central restart left frozen, and one a three-hour soak of automatic splits
   and merges under kills and central restarts) and two on-demand links. Across two
   machines the dynamic scenarios run with the cut family on the second machine's own map spawner.
 
 ## Requirements
 
-- **OpenMMORPG v1.1.4** (`master` at 317d2b8, 2026-10-25) or later. It carries everything the add-on relies on:
+- **OpenMMORPG v1.3.0** (2026-10-30) or later, the first release with client migration (v1.2.1 does not have it).
+  That kit has everything the add-on relies on:
   - the eight kit changes, upstream patches 0001-0008: an owner-change movement fix, frame-granular request waits, a
     virtual `IsWatched()` on the monster activity component, a protected pending-spawn dictionary on the map manager
     (0001-0004), a cache finalizer that corrupted pooled collections under load (0005), one-shot movement flags sent to
@@ -46,7 +51,14 @@ OpenMMORPG **v1.1.4** (see Requirements).
     `Dictionary<DamageElement, MinMaxFloat>` through its attack, skill and receive-damage paths. 0.95.0 is the port: the
     add-on's attack and skill components, the harvestable and the ghost-hit forwarding use the structs. Versions up to
     0.94.0 used the dictionaries and do not compile on v1.1.4 (`no suitable method found to override` on
-    `ApplyAttack`, `ApplySkillUsing` and `ApplyReceiveDamage`).
+    `ApplyAttack`, `ApplySkillUsing` and `ApplyReceiveDamage`);
+  - client migration ([open-mmorpg/OpenMMORPG#28](https://github.com/open-mmorpg/OpenMMORPG/pull/28)): `MigrateClient` and kept objects in
+    LiteNetLibManager, which every crossing runs on. The add-on does not compile without it. 0.98.0 was built and tested
+    on v1.3.0 (`master` at 493df35fc).
+- The scripting define `DISABLE_ADDRESSABLES` on the Windows/Mac/Linux and Dedicated Server targets. The kit's
+  **Tools ▸ Open MMORPG ▸ Install ▸ Import Project Settings** (a step of its own install) sets both. Without it the
+  add-on does not compile, and the Setup window, which checks the define on every target later, is part of what does
+  not compile: add it by hand first (`Documentation/SETUP.md` §3).
 - Unity 6000.3 or newer, matching the kit.
 - Your map scenes in the build settings and your map infos in the game database.
 
@@ -57,7 +69,7 @@ OpenMMORPG **v1.1.4** (see Requirements).
 3. **Cut a map into cells**: add your map's layout from the open scene, either as a uniform grid or as explicit
    rectangles. Cell ids are channel ids and must be unique across the world.
 4. Press **Validate** and use the **Fix** buttons to put the add-on's subclasses onto your manager and entity prefabs
-   and to assign the registry, the gameplay rule and the server tick. For a map set Dynamic it also says, before
+   and to assign the registry, the gameplay rule and the server tick. It also warns, with a Fix, about settings that make a crossing visible: Steered puppets, a low frame rate or network tick. For a map set Dynamic it also says, before
    anything starts, which base cells could never split, whether a fully cut world would pass the 32 band neighbours or
    the 64 links a cell takes when every cell links to every other (a map with `onDemandLinks` links each cell only to
    the cells it needs, and has no such ceiling), and whether the hosts' served cells keep each family on its base's host.
